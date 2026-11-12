@@ -44,3 +44,9 @@ th { color: var(--secondary); font-weight: 600; font-size: 13px; text-transform:
 footer { max-width: 760px; margin: 0 auto; padding: 24px 20px 40px; border-top: 1px solid var(--line); color: var(--tertiary); font-size: 14px; }
 footer a { color: var(--secondary); }
 @media (max-width: 520px) { h1 { font-size: 32px; } nav a { margin-left: 12px; } }
+
+/* The banner a shared link (?u=handle) shows above the page. */
+.invite { border: 1px solid #2c2c2e; background: #111; border-radius: 20px; padding: 20px 22px; margin: 0 0 36px; }
+.invite[hidden] { display: none; }
+.invite-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 14px; color: #f5f5f5; }
+.invite #invite-handle { color: #d4ff3a; }

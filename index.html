@@ -11,6 +11,11 @@
 <header class="bar"><a class="brand" href="./">SPOTTER<span>.</span></a>
 <nav><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="support/">Support</a></nav></header>
 <main>
+<div class="invite" id="invite" hidden>
+  <p class="invite-title"><span id="invite-handle"></span> uses Spotter. Hold them to it.</p>
+  <p><a class="button" id="invite-open" href="#">Open in Spotter</a> <a class="button secondary" id="invite-store" href="https://apps.apple.com/app/id6831641586" hidden>Get it on the App Store</a></p>
+  <p class="muted" id="invite-soon">Spotter is coming soon on the App Store. Have it already? Open their profile.</p>
+</div>
 <p class="eyebrow">Workout tracker &amp; log</p>
 <h1>Your squad is watching.</h1>
 <p class="lead">Spotter is a gym workout tracker for people who know what to do but don't always show up. Promise your week, train with your squad, and pay the forfeit if you miss.</p>
@@ -26,5 +31,17 @@
 <p><a class="button" href="support/">Get help</a> <a class="button secondary" href="privacy/">Privacy</a></p>
 </main>
 <footer><p>Spotter is made by Uygar Acar. Contact <a href="mailto:uygar0605@icloud.com">uygar0605@icloud.com</a>. <a href="terms/">Terms of Use</a> · <a href="privacy/">Privacy Policy</a></p></footer>
+<script>
+// A shared link looks like ?u=<handle>. Show who sent it; anything that isn't a valid handle is ignored.
+(function () {
+  var LIVE = false; // set to true once the app is on the App Store, to show the store button
+  var handle = new URLSearchParams(location.search).get("u") || "";
+  if (!/^[a-z0-9][a-z0-9._]{1,18}[a-z0-9]$/.test(handle)) return;
+  document.getElementById("invite-handle").textContent = "@" + handle;
+  document.getElementById("invite-open").href = "spotter://u/" + handle;
+  if (LIVE) { document.getElementById("invite-store").hidden = false; document.getElementById("invite-soon").hidden = true; }
+  document.getElementById("invite").hidden = false;
+})();
+</script>
 </body>
 </html>
