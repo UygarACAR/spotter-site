@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Spotter: Workout Tracker &amp; Log</title>
 <meta name="description" content="Spotter is a gym workout tracker with a squad behind you: log every lift, promise your week, and let your friends hold you to it.">
+<meta name="apple-itunes-app" content="app-id=6831641586">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,13 +14,14 @@
 <main>
 <div class="invite" id="invite" hidden>
   <p class="invite-title"><span id="invite-handle"></span> uses Spotter. Hold them to it.</p>
-  <p><a class="button" id="invite-open" href="#">Open in Spotter</a> <a class="button secondary" id="invite-store" href="https://apps.apple.com/app/id6831641586" hidden>Get it on the App Store</a></p>
-  <p class="muted" id="invite-soon">Spotter is coming soon on the App Store. Have it already? Open their profile.</p>
+  <p><a class="button" href="https://apps.apple.com/app/id6831641586">Get Spotter on the App Store</a> <a class="button secondary" id="invite-open" href="#">Open their profile</a></p>
+  <p class="muted">Have Spotter already? "Open their profile" takes you straight to them.</p>
 </div>
 <p class="eyebrow">Workout tracker &amp; log</p>
 <h1>Your squad is watching.</h1>
 <p class="lead">Spotter is a gym workout tracker for people who know what to do but don't always show up. Promise your week, train with your squad, and pay the forfeit if you miss.</p>
-<p class="muted">Coming soon on the App Store for iPhone and Apple Watch.</p>
+<p><a class="button" href="https://apps.apple.com/app/id6831641586">Get it on the App Store</a></p>
+<p class="muted">For iPhone and Apple Watch.</p>
 <div class="cards">
   <div class="card"><h3>Log every lift</h3><p>Sets, reps, RPE, supersets, a rest timer that follows you to the Lock Screen, plates math and personal records.</p></div>
   <div class="card"><h3>Promise your week</h3><p>Pick how many days you'll train. Your squad sees the streak, and a missed week gets called out.</p></div>
@@ -34,12 +36,10 @@
 <script>
 // A shared link looks like ?u=<handle>. Show who sent it; anything that isn't a valid handle is ignored.
 (function () {
-  var LIVE = false; // set to true once the app is on the App Store, to show the store button
   var handle = new URLSearchParams(location.search).get("u") || "";
   if (!/^[a-z0-9][a-z0-9._]{1,18}[a-z0-9]$/.test(handle)) return;
   document.getElementById("invite-handle").textContent = "@" + handle;
   document.getElementById("invite-open").href = "spotter://u/" + handle;
-  if (LIVE) { document.getElementById("invite-store").hidden = false; document.getElementById("invite-soon").hidden = true; }
   document.getElementById("invite").hidden = false;
 })();
 </script>
